@@ -38,7 +38,7 @@ chilli_response_SOURCES = main-response.c
 chilli_query_SOURCES = main-query.c 
 chilli_opt_SOURCES = main-opt.c 
 
-libchilli_la_LIBADD = $(top_builddir)/bstring/libbstring.la 
+libchilli_la_LIBADD = $(top_builddir)/bstring/libbstring.la ${LIBJSON}
 LDADD = libchilli.la ${LIBRT} $(top_builddir)/bstring/libbstring.la ${LIBJSON}
 
 if WITH_MINICONFIG
@@ -53,7 +53,7 @@ endif
 
 if WITH_JSONLIB
 AM_CFLAGS += -I$(top_builddir)/json
-libchilli_la_LIBADD += $(top_builddir)/json/libjson.la 
+libchilli_la_LIBADD += $(top_builddir)/json/libjson.la
 LDADD += $(top_builddir)/json/libjson.la 
 endif
 

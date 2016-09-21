@@ -1,4 +1,4 @@
-lib_LTLIBRARIES = libjson.la
+noinst_LTLIBRARIES = libjson.la
 
 libjson_la_SOURCES = \
         arraylist.c \
