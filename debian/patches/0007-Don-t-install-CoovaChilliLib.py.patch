@@ -1,0 +1,24 @@
+From: Tim Riemenschneider <git@tim-riemenschneider.de>
+Date: Wed, 21 Sep 2016 17:41:10 +0200
+Subject: Don't install CoovaChilliLib.py
+
+(it does nothing but print "hello"???)
+---
+ conf/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/conf/Makefile.am b/conf/Makefile.am
+index 58b2583..44a765d 100644
+--- a/conf/Makefile.am
++++ b/conf/Makefile.am
+@@ -6,8 +6,8 @@ chillidir = $(sysconfdir)/chilli
+ chilli_SCRIPTS = functions up.sh down.sh newmulti.sh wpad.dat
+ chilli_DATA = defaults gui-config-default.ini
+ 
+-pythondir = $(libdir)/python
+-python_SCRIPTS = CoovaChilliLib.py
++#pythondir = $(libdir)/python
++#python_SCRIPTS = CoovaChilliLib.py
+ 
+ initdir = $(sysconfdir)/init.d
+ init_SCRIPTS = chilli

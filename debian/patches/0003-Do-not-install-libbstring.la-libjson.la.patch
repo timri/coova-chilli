@@ -1,0 +1,56 @@
+From: Tim Riemenschneider <git@tim-riemenschneider.de>
+Date: Wed, 21 Sep 2016 15:36:36 +0200
+Subject: Do not install libbstring.la + libjson.la
+
+(Alternativly install them to pkglibdir instead of libdir)
+
+Signed-off-by: Tim Riemenschneider <git@tim-riemenschneider.de>
+---
+ bstring/Makefile.am | 4 ++--
+ json/Makefile.am    | 2 +-
+ src/Makefile.am     | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/bstring/Makefile.am b/bstring/Makefile.am
+index 4769570..a55762f 100644
+--- a/bstring/Makefile.am
++++ b/bstring/Makefile.am
+@@ -1,4 +1,4 @@
+-# noinst_LTLIBRARIES = libbstring.la
+-lib_LTLIBRARIES = libbstring.la
++noinst_LTLIBRARIES = libbstring.la
++# lib_LTLIBRARIES = libbstring.la
+ libbstring_la_SOURCES = bstrlib.c
+ noinst_HEADERS = bstrlib.h
+diff --git a/json/Makefile.am b/json/Makefile.am
+index fd6a3d9..97918b0 100644
+--- a/json/Makefile.am
++++ b/json/Makefile.am
+@@ -1,4 +1,4 @@
+-lib_LTLIBRARIES = libjson.la
++noinst_LTLIBRARIES = libjson.la
+ 
+ libjson_la_SOURCES = \
+         arraylist.c \
+diff --git a/src/Makefile.am b/src/Makefile.am
+index ab5f248..e563276 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -38,7 +38,7 @@ chilli_response_SOURCES = main-response.c
+ chilli_query_SOURCES = main-query.c 
+ chilli_opt_SOURCES = main-opt.c 
+ 
+-libchilli_la_LIBADD = $(top_builddir)/bstring/libbstring.la 
++libchilli_la_LIBADD = $(top_builddir)/bstring/libbstring.la ${LIBJSON}
+ LDADD = libchilli.la ${LIBRT} $(top_builddir)/bstring/libbstring.la ${LIBJSON}
+ 
+ if WITH_MINICONFIG
+@@ -53,7 +53,7 @@ endif
+ 
+ if WITH_JSONLIB
+ AM_CFLAGS += -I$(top_builddir)/json
+-libchilli_la_LIBADD += $(top_builddir)/json/libjson.la 
++libchilli_la_LIBADD += $(top_builddir)/json/libjson.la
+ LDADD += $(top_builddir)/json/libjson.la 
+ endif
+ 

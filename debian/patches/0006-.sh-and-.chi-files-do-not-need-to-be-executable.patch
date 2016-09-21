@@ -1,0 +1,73 @@
+From: Tim Riemenschneider <git@tim-riemenschneider.de>
+Date: Wed, 21 Sep 2016 16:05:38 +0200
+Subject: .sh and .chi-files do not need to be executable
+
+Since they are sourced instead of executed, they do not need to be executable.
+They also do not need a shebang-line
+The only file being executed in this context is wwwsh
+---
+ miniportal/Makefile.am        | 3 +--
+ miniportal/config-local.sh.in | 1 -
+ miniportal/login.chi.in       | 0
+ www/chilliform.chi.sh         | 1 -
+ www/chillijs.chi.sh           | 1 -
+ www/config.sh.in              | 1 -
+ 6 files changed, 1 insertion(+), 6 deletions(-)
+ mode change 100755 => 100644 miniportal/config-local.sh.in
+ mode change 100755 => 100644 miniportal/login.chi.in
+
+diff --git a/miniportal/Makefile.am b/miniportal/Makefile.am
+index f156f32..8f7065e 100644
+--- a/miniportal/Makefile.am
++++ b/miniportal/Makefile.am
+@@ -19,8 +19,7 @@ wwwDATAFILES = $(tmpl_files)
+ chillidir = $(sysconfdir)/chilli
+ wwwdir = $(chillidir)/www
+ 
+-www_SCRIPTS = $(wwwSCRIPTFILES) 
+-www_DATA = $(wwwDATAFILES) 
++www_DATA = $(wwwDATAFILES) $(wwwSCRIPTFILES) 
+ 
+ EXTRA_DIST = $(wwwDATAFILES) $(chi_files:=.in) $(sh_files:=.in)
+ 
+diff --git a/miniportal/config-local.sh.in b/miniportal/config-local.sh.in
+old mode 100755
+new mode 100644
+index 9b92a69..eca9029
+--- a/miniportal/config-local.sh.in
++++ b/miniportal/config-local.sh.in
+@@ -1,4 +1,3 @@
+-#!/bin/sh
+ # Copyright (C) 2009-2012 David Bird (Coova Technologies) <support@coova.com>
+ # 
+ # This program is free software: you can redistribute it and/or modify
+diff --git a/miniportal/login.chi.in b/miniportal/login.chi.in
+old mode 100755
+new mode 100644
+diff --git a/www/chilliform.chi.sh b/www/chilliform.chi.sh
+index b3007ca..e9a65e2 100644
+--- a/www/chilliform.chi.sh
++++ b/www/chilliform.chi.sh
+@@ -1,4 +1,3 @@
+-#!/bin/sh
+ . ./config.sh
+ 
+ cat <<EOF
+diff --git a/www/chillijs.chi.sh b/www/chillijs.chi.sh
+index 7580911..91a0efe 100644
+--- a/www/chillijs.chi.sh
++++ b/www/chillijs.chi.sh
+@@ -1,4 +1,3 @@
+-#!/bin/sh
+ # copyright (c) 2012 David Bird (Coova Technologies)
+ # this is the pure shell version...
+ cat <<EOF
+diff --git a/www/config.sh.in b/www/config.sh.in
+index 2af5c87..b58f042 100755
+--- a/www/config.sh.in
++++ b/www/config.sh.in
+@@ -1,4 +1,3 @@
+-#!/bin/sh
+ if [ -f config-local.sh ]; then
+     . ./config-local.sh 
+ else

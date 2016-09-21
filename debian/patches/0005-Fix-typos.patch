@@ -1,0 +1,35 @@
+From: Tim Riemenschneider <git@tim-riemenschneider.de>
+Date: Wed, 21 Sep 2016 15:37:25 +0200
+Subject: Fix typos
+
+---
+ src/chilli.c | 2 +-
+ src/redir.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/chilli.c b/src/chilli.c
+index 1041a87..ff561d5 100644
+--- a/src/chilli.c
++++ b/src/chilli.c
+@@ -2062,7 +2062,7 @@ int chilli_assign_snat(struct app_conn_t *appconn, int force) {
+       (appconn->hisip.s_addr & _options.uamnatanyipex_mask.s_addr) ==
+       _options.uamnatanyipex_addr.s_addr) {
+     if (_options.debug)
+-      syslog(LOG_DEBUG, "Excluding ip %s from SNAT becuase it is in uamnatanyipex",
++      syslog(LOG_DEBUG, "Excluding ip %s from SNAT because it is in uamnatanyipex",
+              inet_ntoa(appconn->hisip));
+     return 0;
+   }
+diff --git a/src/redir.c b/src/redir.c
+index f4c0813..a846f20 100644
+--- a/src/redir.c
++++ b/src/redir.c
+@@ -1741,7 +1741,7 @@ int redir_listen(struct redir_t *redir) {
+       } else {
+         if (_options.debug)
+           syslog(LOG_DEBUG, "setsockopt(SO_REUSEPORT) failed due to proto not available "
+-                 "(probably compiled with newer header files), continueing anyways...");
++                 "(probably compiled with newer header files), continuing anyways...");
+       }
+     }
+ #endif

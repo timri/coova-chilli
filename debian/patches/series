@@ -1,0 +1,7 @@
+0001-radius-proxy-broken-with-bfe0e4b0.patch
+0002-minus-in-manpage.patch
+0003-Do-not-install-libbstring.la-libjson.la.patch
+0004-Install-libchilli.-into-pkgdir.patch
+0005-Fix-typos.patch
+0006-.sh-and-.chi-files-do-not-need-to-be-executable.patch
+0007-Don-t-install-CoovaChilliLib.py.patch

@@ -1,0 +1,60 @@
+From: nvx <nvx@user.noreply.github.com>
+Date: Sun, 7 Aug 2016 12:00:00 +0000
+Subject: radius proxy broken with bfe0e4b0
+
+Description: radius proxy broken with bfe0e4b0
+ bfe0e4b introduces a regression breaking the radius proxy. Replies from the
+ radius proxy are incorrectly sent from this->fd instead of this->proxyfd in
+ radius_resp() which results in the incorrect source port being seen by the
+ AP, which rightly ignores the packet.
+ .
+ I'm not overly familiar with the codebase, so I'm not sure if this is the
+ cleanest solution by far, but a quick hack that appears to have fixed the
+ issue is as follows:
+Author: nvx at github
+Origin: github, https://github.com/coova/coova-chilli/issues/270
+Bug: https://github.com/coova/coova-chilli/issues/270
+---
+ src/radius.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/src/radius.c b/src/radius.c
+index c78bdb5..d23974d 100644
+--- a/src/radius.c
++++ b/src/radius.c
+@@ -1528,6 +1528,26 @@ int radius_pkt_send(struct radius_t *this,
+ 
+ 
+ /*
++ * radius_pkt_send_proxy()
++ * Directly send a packet
++ */
++int radius_pkt_send_proxy(struct radius_t *this,
++      struct radius_packet_t *pack,
++      struct sockaddr_in *peer) {
++
++  size_t len = ntohs(pack->length);
++
++  if (sendto(this->proxyfd, pack, len, 0,(struct sockaddr *) peer,
++       sizeof(struct sockaddr_in)) < 0) {
++    syslog(LOG_ERR, "%s: sendto() failed!", strerror(errno));
++    return -1;
++  }
++
++  return 0;
++}
++
++
++/*
+  * radius_req()
+  * Send of a packet and place it in the retransmit queue
+  */
+@@ -1592,7 +1612,7 @@ int radius_resp(struct radius_t *this,
+ 				this->proxysecret,
+ 				this->proxysecretlen);
+ 
+-  return radius_pkt_send(this, pack, peer);
++  return radius_pkt_send_proxy(this, pack, peer);
+ }
+ #endif
+ 

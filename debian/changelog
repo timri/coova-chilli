@@ -1,3 +1,14 @@
+coova-chilli (1.3.1.4~0.22-g41b3103) UNRELEASED; urgency=medium
+
+  ** SNAPSHOT build @41b310372702a3126e0b8522ca2cdb769749d5eb **
+  * local package
+
+  [ Tim Riemenschneider ]
+  * include fixes:
+     https://github.com/coova/coova-chilli/issues/270
+
+ -- Tim Riemenschneider <git@tim-riemenschneider.de>  Wed, 21 Sep 2016 17:44:35 +0200
+
 coova-chilli (1.3.0) unstable; urgency=low
 
    * See ChangeLog

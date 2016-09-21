@@ -1,0 +1,868 @@
+From: Tim Riemenschneider <git@tim-riemenschneider.de>
+Date: Wed, 21 Sep 2016 15:17:06 +0200
+Subject: minus-in-manpage
+
+Use an actual minus for options in manpages instead of a hyphen.
+(Found by lintian)
+---
+ doc/chilli-radius.5.in    |   2 +-
+ doc/chilli.8.in           |  28 ++++-----
+ doc/chilli.conf.5.in      | 156 +++++++++++++++++++++++-----------------------
+ doc/chilli_opt.1.in       |   6 +-
+ doc/chilli_proxy.1.in     |   2 +-
+ doc/chilli_query.1.in     |  36 +++++------
+ doc/chilli_radconfig.1.in |  14 ++---
+ doc/chilli_radsec.1.in    |   2 +-
+ doc/chilli_redir.1.in     |   2 +-
+ doc/chilli_response.1.in  |   2 +-
+ doc/chilli_rtmon.1.in     |   6 +-
+ doc/chilli_script.1.in    |   2 +-
+ doc/fmttxt.pl             |   2 +
+ 13 files changed, 131 insertions(+), 129 deletions(-)
+
+diff --git a/doc/chilli-radius.5.in b/doc/chilli-radius.5.in
+index 40c746b..d931348 100644
+--- a/doc/chilli-radius.5.in
++++ b/doc/chilli-radius.5.in
+@@ -1,6 +1,6 @@
+ .TH chilli-radius 5 "August 2007"
+ .SH NAME
+-chilli-radius \-  Information about RADIUS in chilli
++chilli\-radius \- Information about RADIUS in chilli
+ 
+ 
+ .SH DESCRIPTION
+diff --git a/doc/chilli.8.in b/doc/chilli.8.in
+index e873f30..449738a 100644
+--- a/doc/chilli.8.in
++++ b/doc/chilli.8.in
+@@ -53,8 +53,8 @@ clients and an uplink network interface for forwarding traffic to
+ other networks.
+ 
+ Authentication of clients is performed by an external radius
+-server. For UAM the CHAP-Challenge and CHAP-Password as specified by
+-RFC 2865 is used. For WPA the radius EAP-Message attribute as defined
++server. For UAM the CHAP\-Challenge and CHAP\-Password as specified by
++RFC 2865 is used. For WPA the radius EAP\-Message attribute as defined
+ in RFC 2869 is used. The message attributes described in RFC 2548 are
+ used for transferring encryption keys from the radius server to
+ chilli. Furthermore the radius interface supports accounting.
+@@ -104,37 +104,37 @@ for a complete list of possible configurations. Here are just a few common comma
+ line options:
+ 
+ .TP
+-.BI --help
++.BI \-\-help
+ Print help and exit.
+ 
+ .TP
+-.BI --version
++.BI \-\-version
+ Print version and exit.
+ 
+ .TP
+-.BI --fg
++.BI \-\-fg
+ Run in foreground (default = off)
+ 
+ .TP
+-.BI --debug
++.BI \-\-debug
+ Run in debug mode (default = off)
+ 
+ .TP
+-.BI --conf " file"
++.BI \-\-conf " file"
+ Configuration file to use instead of the default below. See 
+ .BR chilli.conf(5)
+ for more inforamtion.
+ 
+ .TP
+-.BI --pidfile " file"
++.BI \-\-pidfile " file"
+ File to put the process ID instead of the default below.
+ 
+ .TP
+-.BI --cmdsock " file"
++.BI \-\-cmdsock " file"
+ UNIX socket file for inter-process communication instead of default below.
+ 
+ .TP
+-.BI --statedir " path"
++.BI \-\-statedir " path"
+ Directory of nonvolatile data instead of default below.
+ 
+ 
+@@ -263,7 +263,7 @@ The above configuration options can only be changed by restarting the daemon.
+ 
+ .SH "SEE ALSO"
+ .BR chilli.conf(5)
+-.BR chilli-radius(5)
++.BR chilli\-radius(5)
+ .BR chilli_opt(1)
+ .BR chilli_query(1)
+ .BR chilli_radconfig(1)
+@@ -281,7 +281,7 @@ for further documentation and community support.
+ Besides the long options documented in this man page
+ .B chilli
+ also accepts a number of short options with the same functionality. Use
+-.B chilli --help
++.B chilli \-\-help
+ for a full list of all the available options.
+ 
+ The 
+@@ -291,8 +291,8 @@ for proper operation of the
+ server. Linux kernels later than 2.4.7 already include the driver,
+ but typically needs to be loaded manually with
+ .B modprobe tun
+-or automaticly by adding
+-.B alias char-major-10-200 tun
++or automatically by adding
++.B alias char\-major\-10\-200 tun
+ to the
+ .B /etc/modules.conf
+ configuration file. For other platforms see
+diff --git a/doc/chilli.conf.5.in b/doc/chilli.conf.5.in
+index 48e991e..70f51f7 100644
+--- a/doc/chilli.conf.5.in
++++ b/doc/chilli.conf.5.in
+@@ -23,9 +23,9 @@ line or in a configuration file. When on the command line, options are
+ prefixed with two dashes and may or may not have an equal sign, for
+ instance, these are equivalent:
+ 
+-.I chilli --uamallowed www.example.com --uamanydns
++.I chilli \-\-uamallowed www.example.com \-\-uamanydns
+ 
+-.I chilli --uamallowed="www.example.com" --uamanydns
++.I chilli \-\-uamallowed="www.example.com" \-\-uamanydns
+ 
+ Options that do not have arguments behave the same way, just without any
+ equal sign or second argument. When in the configuration file, options must
+@@ -57,41 +57,41 @@ are also allowed in the configuration file.
+ .SH OPTIONS
+ 
+ As mentioned above, all options below are able to be put on the command line
+-(prefixed with '--') or in a configuration file. A few options, shown below
++(prefixed with '\-\-') or in a configuration file. A few options, shown below
+ with the leading dashes, are typically only used on the command line. 
+ 
+ .TP
+-.BI --help
++.BI \-\-help
+ Or
+-.B -h
++.B \-h
+ for short; prints help and exits (command line)
+ 
+ .TP
+-.BI --version
++.BI \-\-version
+ Or
+-.B -V
++.B \-V
+ for short; prints version and exits (command line)
+ 
+ .TP
+-.BI --fg
++.BI \-\-fg
+ Or
+-.B -f
++.B \-f
+ for short; runs server in foreground (command line)
+ 
+ .TP
+-.BI --debug
++.BI \-\-debug
+ Or
+-.B -d
++.B \-d
+ for short; run server in debug mode (command line)
+ 
+ .TP
+-.BI --debugfacility " level"
++.BI \-\-debugfacility " level"
+ Increase the debug level (command line) (should be named debuglevel)
+ 
+ .TP
+-.BI --conf " file"
++.BI \-\-conf " file"
+ Or
+-.BI -c " file"
++.BI \-c " file"
+ for short; use the configuration file
+ .I file
+ instead of the default show in
+@@ -198,23 +198,23 @@ use for DNS lookups.
+ .BI ipup " script"
+ Script executed after the TUN/TAP network interface has been brought up.
+ Executed with the following parameters: 
+-.I <device-name> <ip-address> <net-mask>
++.I <device\-name> <ip\-address> <net\-mask>
+ and with environment variables:
+ .RS
+ .TP
+-.BI DEV= <tun/tap-device-name>
++.BI DEV= <tun/tap\-device\-name>
+ The TUN/TAP device being brought up.
+ 
+ .TP
+-.BI ADDR= <tun/tap-device-ip>
++.BI ADDR= <tun/tap\-device\-ip>
+ The TUN/TAP device IP address being brought up.
+ 
+ .TP
+-.BI MASK= <tun/tap-device-mask>
++.BI MASK= <tun/tap\-device\-mask>
+ The TUN/TAP device net mask being brought up.
+ 
+ .TP
+-.BI NET= <tun/tap-device-net>
++.BI NET= <tun/tap\-device\-net>
+ The TUN/TAP device network being brought up.
+ 
+ .TP
+@@ -225,14 +225,14 @@ configured in
+ .BR chilli.conf(5)
+ 
+ .TP
+-.BI UAMPORT= <port-num>
++.BI UAMPORT= <port\-num>
+ The 
+ .B uamport 
+ configured in 
+ .BR chilli.conf(5)
+ 
+ .TP
+-.BI UAMUIPORT= <port-num>
++.BI UAMUIPORT= <port\-num>
+ The 
+ .B uamuiport 
+ configured in 
+@@ -252,23 +252,23 @@ environment variables (see source code for possibly more):
+ .RS
+ 
+ .TP
+-.BI DEV= <tun/tap-device>
++.BI DEV= <tun/tap\-device>
+ The TUN/TAP device.
+ 
+ .TP
+-.BI ADDR= <chilli-ip>
++.BI ADDR= <chilli\-ip>
+ IP Address of chilli, see the
+ .B uamlisten
+ option.
+ 
+ .TP
+-.BI NET= <chilli-net>
++.BI NET= <chilli\-net>
+ Network of chilli, see the
+ .B net
+ option.
+ 
+ .TP
+-.BI MASK= <chilli-net-mask>
++.BI MASK= <chilli\-net\-mask>
+ Network mask of chilli, see the
+ .B net
+ options.
+@@ -280,70 +280,70 @@ Is set to the
+ value.
+ 
+ .TP
+-.BI NAS_ID= <nas-id>
++.BI NAS_ID= <nas\-id>
+ The 
+ .B radiusnasid
+ option.
+ 
+ .TP
+-.BI WISPR_LOCATION_ID= <location-id>
++.BI WISPR_LOCATION_ID= <location\-id>
+ The 
+ .B radiuslocationid
+ option.
+ 
+ .TP
+-.BI WISPR_LOCATION_NAME= <location-name>
++.BI WISPR_LOCATION_NAME= <location\-name>
+ The 
+ .B radiuslocationname
+ option.
+ 
+ .TP
+ .BI USER_NAME= <username>
+-User-name used to login.
++User\-Name used to login.
+ 
+ .TP
+-.BI FRAMED_IP_ADDRESS= <client-ip>
++.BI FRAMED_IP_ADDRESS= <client\-ip>
+ The client's IP Address.
+ 
+ .TP
+-.BI CALLING_STATION_ID= <client-mac>
++.BI CALLING_STATION_ID= <client\-mac>
+ The client's MAC Address.
+ 
+ .TP
+-.BI CALLED_STATION_ID= <chilli-mac>
++.BI CALLED_STATION_ID= <chilli\-mac>
+ The MAC address of the chilli interface.
+ 
+ .TP
+ .BI FILTER_ID= <filter>
+-A possible filter ID returned in RADIUS Filter-ID.
++A possible filter ID returned in RADIUS Filter\-ID.
+ 
+ .TP
+ .BI SESSION_TIMEOUT= <seconds>
+-The max session time, as set by RADIUS Session-Timeout.
++The max session time, as set by RADIUS Session\-Timeout.
+ 
+ .TP
+ .BI IDLE_TIMEOUT= <seconds>
+-The max idle time, as set by RADIUS Idle-Timeout.
++The max idle time, as set by RADIUS Idle\-Timeout.
+ 
+ .TP
+ .BI WISPR_BANDWIDTH_MAX_UP= <bandwidth>
+-Max up stream bandwidth set by RADIUS WISPr-Bandwidth-Max-Up.
++Max up stream bandwidth set by RADIUS WISPr\-Bandwidth\-Max\-Up.
+ 
+ .TP
+ .BI WISPR_BANDWIDTH_MAX_DOWN= <bandwidth>
+-Max down stream bandwidth set by RADIUS WISPr-Bandwidth-Max-Down.
++Max down stream bandwidth set by RADIUS WISPr\-Bandwidth\-Max\-Down.
+ 
+ .TP
+ .BI COOVACHILLI_MAX_INPUT_OCTETS= <bytes>
+-Max input octets set by RADIUS CoovaChilli-Max-Input-Octets.
++Max input octets set by RADIUS CoovaChilli\-Max\-Input\-Octets.
+ 
+ .TP
+ .BI COOVACHILLI_MAX_OUTPUT_OCTETS= <bytes>
+-Max output octets set by RADIUS CoovaChilli-Max-Output-Octets.
++Max output octets set by RADIUS CoovaChilli\-Max\-Output\-Octets.
+ 
+ .TP
+ .BI COOVACHILLI_MAX_TOTAL_OCTETS= <bytes>
+-Max total octets set by RADIUS CoovaChilli-Max-Total-Octets.
++Max total octets set by RADIUS CoovaChilli\-Max\-Total\-Octets.
+ 
+ .RE
+ 
+@@ -364,21 +364,21 @@ URL.
+ 
+ .TP
+ .BI nasip " ipaddress"
+-Value to use in RADIUS NAS-IP-Address attribute. If not present, 
++Value to use in RADIUS NAS\-IP\-Address attribute. If not present, 
+ .B radiuslisten
+ is used (which defaults to "0.0.0.0").
+ 
+ .TP
+ .BI nasmac " mac"
+-MAC address value to use in RADIUS Called-Station-ID attribute. If not present, 
++MAC address value to use in RADIUS Called\-Station\-ID attribute. If not present, 
+ the MAC address of the 
+ .B dhcpif
+-is used for Called-Station-ID.
++is used for Called\-Station\-ID.
+ 
+ .TP
+ .BI radiuslisten " host"
+ Local interface IP address to use for the radius interface. Defaults to the
+-value used in RADIUS NAS-IP-Address when
++value used in RADIUS NAS\-IP\-Address when
+ .B nasip
+ is not set.
+ 
+@@ -400,7 +400,7 @@ The UDP port number to use for radius accounting requests (default 1813).
+ 
+ .TP
+ .BI radiussecret " secret"
+-Radius shared secret for both servers (default coova-anonymous). This
++Radius shared secret for both servers (default coova\-anonymous). This
+ secret should be changed in order not to compromise security.
+ 
+ .TP
+@@ -423,30 +423,30 @@ Best Current Practices v1, Feb 2003.
+ 
+ .TP
+ .BI radiusnasporttype " type"
+-Value of NAS-Port-Type attribute. Defaults to 19
+-(Wireless-IEEE-802.11).
++Value of NAS\-Port\-Type attribute. Defaults to 19
++(Wireless\-IEEE\-802.11).
+ 
+ .TP
+ .BI radiusoriginalurl
+-Flag (defaults to off) to send the CoovaChilli-OriginalURL RADIUS VSA in
+-Access-Request. 
++Flag (defaults to off) to send the CoovaChilli\-OriginalURL RADIUS VSA in
++Access\-Request. 
+ 
+ .TP
+ .BI adminuser " username"
+-User-name to use for Administrative-User authentication in order to pick up
++User\-Name to use for Administrative\-User authentication in order to pick up
+ chilli configurations and establish a device 'system' session.
+ 
+ .TP
+ .BI adminpasswd " password"
+-Password to use for Administrative-User authentication in order to pick up
++Password to use for Administrative\-User authentication in order to pick up
+ chilli configurations and establish a device 'system' session.
+ 
+ .TP
+ .BI adminupdatefile " filename" 
+-The file to use as the Administrative-User update file. When used in
++The file to use as the Administrative\-User update file. When used in
+ combination with the above adminuser and adminpasswd options,
+-CoovaChilli-Config RADIUS attributes found in the Administrative-User
+-Access-Accept are put into the specified file. If the file changes,
++CoovaChilli\-Config RADIUS attributes found in the Administrative\-User
++Access\-Accept are put into the specified file. If the file changes,
+ chilli will reload it's configuration (it's assumed that this file is
+ included into the chilli configuration file).
+ 
+@@ -458,16 +458,16 @@ RADIUS attribtues.
+ .TP
+ .B openidauth
+ Allows OpenID authentication by sending
+-.I CoovaChilli-Config=allow-openidauth
+-in RADIUS Access-Requests to inform the RADIUS server of the option.
++.I CoovaChilli\-Config=allow\-openidauth
++in RADIUS Access\-Requests to inform the RADIUS server of the option.
+ 
+ .TP
+ .B wpaguests
+ Allows WPA Guest authentication by sending
+-.I CoovaChilli-Config=allow-wpa-guests
+-in RADIUS Access-Requests to inform the RADIUS server of the option. The
+-RADIUS may return with an Access-Accept containing
+-.I CoovaChilli-Config=require-uam-auth
++.I CoovaChilli\-Config=allow\-wpa\-guests
++in RADIUS Access\-Requests to inform the RADIUS server of the option. The
++RADIUS may return with an Access\-Accept containing
++.I CoovaChilli\-Config=require\-uam\-auth
+ to give WPA access, but enforce the captive portal.
+ 
+ .TP
+@@ -515,14 +515,14 @@ Use the TAP interface instead of TUN (Linux only).
+ Do not create arp table entries in when using TAP. (Linux only).
+ 
+ .TP
+-.BI nexthop " mac-address"
++.BI nexthop " <mac\-address>"
+ Specify a MAC address which is the layer 2 next hop to route
+ packets to (used with
+ .B usetap
+ only).
+ 
+ .TP
+-.BI rtmonfile " file"
++.BI rtmonfile " <file>"
+ Option to launch the 
+ .I chilli_rtmon
+ daemon with the specified file as the update file. The 
+@@ -608,7 +608,7 @@ URL of homepage to redirect unauthenticated users to. If not specified this defa
+ .TP
+ .BI uamaaaurl " url"
+ When chilli is built with the 
+-.I --enable-chilliproxy
++.I \-\-enable\-chilliproxy
+ compile-time option, this configuration option can be used to define 
+ a URL to use for the HTTP AAA protocol described here:
+ http://www.coova.org/CoovaChilli/Proxy
+@@ -691,9 +691,9 @@ automatically add to the walled garden. This is done by the inspecting of
+ DNS packets being sent back to the subscriber. 
+ 
+ .TP
+-.BI uamregex " host-pattern::path-pattern::qs-pattern"
++.BI uamregex " <host\-pattern>::<path\-pattern>::<qs\-pattern>"
+ When chilli is built with the 
+-.B --enable-chilliredir
++.B \-\-enable\-chilliredir
+ option given to the configure script, the 
+ .B uamregex
+ option is available. The value should be a
+@@ -708,7 +708,7 @@ will be negated in meaning.
+ 
+ Examples:
+ 
+-.I --uamregex='.google.com$::!^mail/::*'
++.I \-\-uamregex='.google.com$::!^mail/::*'
+ 
+ This will allow all requests to a .google.com host except if the URL starts with mail (links to Gmail). 
+ 
+@@ -724,21 +724,21 @@ Default idle timeout (max idle time) unless otherwise set by RADIUS
+ 
+ .TP
+ .BI definteriminterval " seconds"
+-Default interim-interval for RADIUS accounting unless otherwise set by RADIUS
++Default interim\-interval for RADIUS accounting unless otherwise set by RADIUS
+ (defaults to 0, meaning unlimited).
+ 
+ .TP
+ .BI defbandwidthmaxdown
+-Default bandwidth max down set in bps, same as WISPr-Bandwidth-Max-Down.
++Default bandwidth max down set in bps, same as WISPr\-Bandwidth\-Max\-Down.
+ 
+ .TP
+ .BI defbandwidthmaxup
+-Default bandwidth max up set in bps, same as WISPr-Bandwidth-Max-Up.
++Default bandwidth max up set in bps, same as WISPr\-Bandwidth\-Max\-Up.
+ 
+ .TP
+ .B acctupdate
+ Allow updating of session parameters with RADIUS attributes sent in
+-Accounting-Response. 
++Accounting\-Response. 
+ 
+ .TP
+ .BI wwwdir " path"
+@@ -747,7 +747,7 @@ accessible using the URL format http://<uamlisten>:<uamport>/www/<filename>
+ 
+ .TP
+ .BI wwwbin " script"
+-Executable to run as a CGI type program (like haserl) for URLs with extention 
++Executable to run as a CGI type program (like haserl) for URLs with extension 
+ .B .chi
+ - in the format
+ http://<uamlisten>:<uamport>/www/<file>.chi 
+@@ -831,7 +831,7 @@ Return the so-called Chilli XML along with WISPr XML.
+ .TP
+ .B macauth
+ If this option is given CoovaChilli will try to authenticate all users
+-based on their mac address alone. The User-Name sent to the radius
++based on their mac address alone. The User\-Name sent to the radius
+ server will consist of the MAC address and an optional suffix which
+ is specified by the
+ .B macsuffix
+@@ -847,9 +847,9 @@ List of MAC addresses for which MAC authentication will be performed.
+ Example:
+ 
+ .RS
+-.BI macallowed " 00-0A-5E-AC-BE-51,00-30-1B-3C-32-E9"
++.BI macallowed " 00\-0A\-5E\-AC\-BE\-51,00\-30\-1B\-3C\-32\-E9"
+ 
+-The User-Name sent to the radius server will consist of the MAC address
++The User\-Name sent to the radius server will consist of the MAC address
+ and an optional suffix which is specified by the
+ .B macsuffix
+ option. If the 
+@@ -866,7 +866,7 @@ specified.
+ 
+ .TP
+ .BI macsuffix " suffix"
+-Suffix to add to the MAC address in order to form the User-Name, which
++Suffix to add to the MAC address in order to form the User\-Name, which
+ is sent to the radius server.
+ 
+ .TP
+@@ -885,12 +885,12 @@ A file containing MAC address and IP address mappings for DHCP allocation.
+ The file should be formatted as:
+ 
+ .RS
+-00-XX-XX-XX-XX-XX  IP.IP.IP.IP
++00\-XX\-XX\-XX\-XX\-XX  IP.IP.IP.IP
+ .RE
+ 
+ .TP
+ .BI localusers " file"
+-A colon seperated file containing usernames and passwords of locally
++A colon separated file containing usernames and passwords of locally
+ authenticated users. 
+ 
+ .TP
+@@ -1034,7 +1034,7 @@ URL.
+ 
+ .SH "SEE ALSO"
+ .BR chilli(8)
+-.BR chilli-radius(5)
++.BR chilli\-radius(5)
+ .BR chilli_opt(1)
+ .BR chilli_radconfig(1)
+ .BR syslogd(8)
+diff --git a/doc/chilli_opt.1.in b/doc/chilli_opt.1.in
+index 2343200..07ab2bc 100644
+--- a/doc/chilli_opt.1.in
++++ b/doc/chilli_opt.1.in
+@@ -38,7 +38,7 @@ architecture depended) file. When executed by
+ the binary file used is 
+ .I config.bin
+ found in a process specific directory in the temporary file system, such as
+-.I /tmp/chilli-1000/config.bin
++.I /tmp/chilli\-1000/config.bin
+ where 1000 is the process id of the running 
+ .B chilli
+ server. 
+@@ -46,9 +46,9 @@ server.
+ 
+ .SH EXAMPLES
+ 
+-# chilli_opt --version
++# chilli_opt \-\-version
+ 
+-# chilli_opt -b /tmp/chilli-[pid]/config.bin -r
++# chilli_opt \-b /tmp/chilli\-[pid]/config.bin \-r
+ .RE
+ 
+ .SH "SEE ALSO"
+diff --git a/doc/chilli_proxy.1.in b/doc/chilli_proxy.1.in
+index 026be15..5b94651 100644
+--- a/doc/chilli_proxy.1.in
++++ b/doc/chilli_proxy.1.in
+@@ -8,7 +8,7 @@ chilli_proxy \-  Chilli HTTP API Proxy
+ 
+ .SH SYNOPSIS
+ .B chilli_proxy
+--b <path-to-binary-config> [other chilli options]
++\-b <path\-to\-binary\-config> [other chilli options]
+ 
+ .SH DESCRIPTION
+ .B chilli_proxy
+diff --git a/doc/chilli_query.1.in b/doc/chilli_query.1.in
+index 21e2cc0..9081c17 100644
+--- a/doc/chilli_query.1.in
++++ b/doc/chilli_query.1.in
+@@ -16,7 +16,7 @@ chilli_query \-  Interface into the chilli server
+ 
+ .SH SYNOPSIS
+ .B chilli_query
+-[ \-s <unix-socket> ] <command> [<parameters>...]
++[ \-s <unix\-socket> ] <command> [<parameters>...]
+ 
+ .SH DESCRIPTION
+ .B chilli_query
+@@ -31,20 +31,20 @@ Commands:
+ .BI list
+ To list all connected clients (subscribers) providing the MAC Address,
+ IP Address, internal chilli state (dnat, pass, etc), the session id
+-(used in Acct-Session-ID), authenticated status (1 authorized, 0 not),
+-user-name used during login, duration / max duration, idle time / max
++(used in Acct\-Session\-ID), authenticated status (1 authorized, 0 not),
++user\-name used during login, duration / max duration, idle time / max
+ idle time, input octets / max input octets, output octets / max output
+ octets, max total octets, status of option swapoctets, bandwidth
+ limitation information, and the original URL.
+ 
+ .TP
+-.BI listip " <ip-address>"
++.BI listip " <ip\-address>"
+ Same as 
+ .B list
+ but for one IP address.
+ 
+ .TP
+-.BI listmac " <mac-address>"
++.BI listmac " <mac\-address>"
+ Same as 
+ .B list
+ but for one MAC address.
+@@ -67,27 +67,27 @@ Show the internal walled garden state.
+ Show the internal RADIUS queue state.
+ 
+ .TP
+-.BI addgarden " [ ip <ip> | mac <mac> ] data <uamallow-resource>"
++.BI addgarden " [ ip <ip> | mac <mac> ] data <uamallow\-resource>"
+ Add to the dynamic walled garden. When used without the 'ip' or 'mac'
+ option, the entry applies to the global garden. Otherwise, it is
+-session specific only if configured with --enable-sessgarden.
++session specific only if configured with \-\-enable\-sessgarden.
+ 
+ .TP
+-.BI remgarden " [ ip <ip> | mac <mac> ] data <uamallow-resource>"
++.BI remgarden " [ ip <ip> | mac <mac> ] data <uamallow\-resource>"
+ Remove from the dynamic walled garden. When used without the 'ip'
+ or 'mac' option, the entry applies to the global garden. Otherwise, it
+-is session specific only if configured with --enable-sessgarden.
++is session specific only if configured with \-\-enable\-sessgarden.
+ 
+ .RS
+ .I PARAMETERS
+ .TP
+-.BI ip " <ip-address>"
++.BI ip " <ip\-address>"
+ Select the session to be authorized by the IP address using this option (may
+ be used with the option below)
+ 
+ .TP
+-.BI sessionid " <session-id>"
+-Select the session to be authorized by the Session-ID (may be used with the
++.BI sessionid " <session\-id>"
++Select the session to be authorized by the Session\-ID (may be used with the
+ above option)
+ 
+ .TP
+@@ -103,15 +103,15 @@ Sets the max session time of the session.
+ Sets the max idle time of the session.
+ 
+ .TP
+-.BI maxoctets " <number-of-bytes>"
++.BI maxoctets " <number\-of\-bytes>"
+ Sets the max data (input + output) limit of the session.
+ 
+ .TP
+-.BI maxinputoctets " <number-of-bytes>"
++.BI maxinputoctets " <number\-of\-bytes>"
+ Sets the max input data limit of the session.
+ 
+ .TP
+-.BI maxoutputoctets " <number-of-bytes>"
++.BI maxoutputoctets " <number\-of\-bytes>"
+ Sets the max output data limit of the session.
+ 
+ .TP
+@@ -125,7 +125,7 @@ Sets the max down bandwidth of the session.
+ .RE
+ 
+ .TP 
+-.BI logout " <client-mac-address>" 
++.BI logout " <client\-mac\-address>" 
+ Logout and releases the DHCP lease of a client explicitly based on the MAC
+ address (gotten from a list command).  
+ 
+@@ -133,7 +133,7 @@ address (gotten from a list command).
+ 
+ # chilli_query list
+ .RE
+-00:0D:XX:XX:XX:XX 10.1.0.3 dnat 46c83f70000 0 - 0/0 0/0 http://url.com
++00:0D:XX:XX:XX:XX 10.1.0.3 dnat 46c83f70000 0 \- 0/0 0/0 http://url.com
+ 
+ # chilli_query authorize ip 10.1.0.3 sessiontimeout 60 username me
+ .RE
+@@ -165,7 +165,7 @@ address (gotten from a list command).
+   }\(aq
+ .RE
+ User 1
+- MAC:             00-11-XX-XX-XX-XX
++ MAC:             00\-11\-XX\-XX\-XX\-XX
+  IP Address:      10.1.0.2
+  Session ID:      46fd423c00000001
+  User URL:        http://www.yahoo.com/
+diff --git a/doc/chilli_radconfig.1.in b/doc/chilli_radconfig.1.in
+index c650bcb..9c9bd5e 100644
+--- a/doc/chilli_radconfig.1.in
++++ b/doc/chilli_radconfig.1.in
+@@ -29,21 +29,21 @@ arguments as
+ .B chilli
+ (so that it can run off the same configuration file), but only looks for a
+ small number of settings to perform an 
+-.I Administrative-User
++.I Administrative\-User
+ login. The utility will print out the value of all the 
+-.I CoovaChilli-Config 
+-attributes in the Access-Accept. 
++.I CoovaChilli\-Config 
++attributes in the Access\-Accept. 
+ 
+ .SH EXAMPLES
+ 
+-.I # chilli_radconfig --radiusserver1=192.168.1.1 \
+-   --radiussecret=MySecret --adminuser=coovachilli \
+-   --adminpasswd=coovachilli > hs.conf
++.I # chilli_radconfig \-\-radiusserver1=192.168.1.1 \
++   \-\-radiussecret=MySecret \-\-adminuser=coovachilli \
++   \-\-adminpasswd=coovachilli > hs.conf
+ 
+ .SH "SEE ALSO"
+ .BR chilli(8)
+ .BR chilli.conf(5)
+-.BR chilli-radius(5)
++.BR chilli\-radius(5)
+ 
+ .SH NOTES 
+ .LP
+diff --git a/doc/chilli_radsec.1.in b/doc/chilli_radsec.1.in
+index ce86f20..a854939 100644
+--- a/doc/chilli_radsec.1.in
++++ b/doc/chilli_radsec.1.in
+@@ -8,7 +8,7 @@ chilli_radsec \-  Chilli RadSec Tunnel Server
+ 
+ .SH SYNOPSIS
+ .B chilli_radsec
+--b <path-to-binary-config> [other chilli options]
++\-b <path\-to\-binary\-config> [other chilli options]
+ 
+ .SH DESCRIPTION
+ .B chilli_radsec
+diff --git a/doc/chilli_redir.1.in b/doc/chilli_redir.1.in
+index 3f1fd83..9c5f180 100644
+--- a/doc/chilli_redir.1.in
++++ b/doc/chilli_redir.1.in
+@@ -8,7 +8,7 @@ chilli_redir \-  Chilli Redirection/Portal Server
+ 
+ .SH SYNOPSIS
+ .B chilli_redir
+--b <path-to-binary-config> [other chilli options]
++\-b <path\-to\-binary\-config> [other chilli options]
+ 
+ .SH DESCRIPTION
+ .B chilli_redir
+diff --git a/doc/chilli_response.1.in b/doc/chilli_response.1.in
+index fe48c3f..d60710c 100644
+--- a/doc/chilli_response.1.in
++++ b/doc/chilli_response.1.in
+@@ -12,7 +12,7 @@
+ 
+ .TH chilli_response 1 "August 2007"
+ .SH NAME
+-chilli_response \-  Forms a CHAP Response 
++chilli_response \(hy Forms a CHAP Response 
+ 
+ .SH SYNOPSIS
+ .B chilli_response
+diff --git a/doc/chilli_rtmon.1.in b/doc/chilli_rtmon.1.in
+index ea4c8cb..ec4f00e 100644
+--- a/doc/chilli_rtmon.1.in
++++ b/doc/chilli_rtmon.1.in
+@@ -16,7 +16,7 @@ chilli_rtmon \-  Default Route Monitor for CoovaChilli
+ 
+ .SH SYNOPSIS
+ .B chilli_rtmon
+--file <update file> -pid <chilli pid> [-debug]
++\-file <update file> \-pid <chilli pid> [\-debug]
+ 
+ .SH DESCRIPTION
+ .B chilli_rtmon
+@@ -30,9 +30,9 @@ server to instruct it to reread the configuration.
+ 
+ .SH EXAMPLES
+ 
+-# chilli_rtmon -debug
++# chilli_rtmon \-debug
+ 
+-# chilli_rtmon -file /tmp/nexthop.conf -pid <pid>
++# chilli_rtmon \-file /tmp/nexthop.conf \-pid <pid>
+ .RE
+ 
+ .SH "SEE ALSO"
+diff --git a/doc/chilli_script.1.in b/doc/chilli_script.1.in
+index 3f34624..1f0e294 100644
+--- a/doc/chilli_script.1.in
++++ b/doc/chilli_script.1.in
+@@ -8,7 +8,7 @@ chilli_script \-  CoovaChilli Script Utility
+ 
+ .SH SYNOPSIS
+ .B chilli_script
+-<path-to-binary-config> <program-path> [program-args]
++<path\-to\-binary\-config> <program\-path> [program\-args]
+ 
+ .SH DESCRIPTION
+ .B chilli_script
+diff --git a/doc/fmttxt.pl b/doc/fmttxt.pl
+index 1b57711..32c0125 100755
+--- a/doc/fmttxt.pl
++++ b/doc/fmttxt.pl
+@@ -175,6 +175,8 @@ sub attributes2man {
+ 	}
+     }
+ 
++    # "-" is a minus, not a hyphen, groff defaults to hyphen
++    $attributes =~ s/([^\\])-/\1\\-/g;
+     $file = `cat chilli-radius.5.in`;
+     $file =~ s/\@ATTRIBUTES\@/$attributes/;
+ 

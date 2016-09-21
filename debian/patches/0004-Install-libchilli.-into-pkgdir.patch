@@ -1,0 +1,24 @@
+From: Tim Riemenschneider <git@tim-riemenschneider.de>
+Date: Wed, 21 Sep 2016 15:36:56 +0200
+Subject: Install libchilli.* into pkgdir
+
+these are private libraries not intended to be used by other programs.
+
+Signed-off-by: Tim Riemenschneider <git@tim-riemenschneider.de>
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e563276..b4c7c65 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -14,7 +14,7 @@ radius_wispr.h radius_coovachilli.h ssl.h dns.h net.h \
+ pkt.h conn.h lookup.h chilli_limits.h cmdline.h debug.h \
+ radius_pkt.h ../bstring/bstrlib.h ../config.h system.h 
+ 
+-lib_LTLIBRARIES = libchilli.la
++pkglib_LTLIBRARIES = libchilli.la
+ sbin_PROGRAMS = \
+ chilli chilli_response chilli_radconfig chilli_opt 
+ 
