@@ -1741,7 +1741,7 @@ int redir_listen(struct redir_t *redir) {
       } else {
         if (_options.debug)
           syslog(LOG_DEBUG, "setsockopt(SO_REUSEPORT) failed due to proto not available "
-                 "(probably compiled with newer header files), continueing anyways...");
+                 "(probably compiled with newer header files), continuing anyways...");
       }
     }
 #endif

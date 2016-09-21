@@ -2062,7 +2062,7 @@ int chilli_assign_snat(struct app_conn_t *appconn, int force) {
       (appconn->hisip.s_addr & _options.uamnatanyipex_mask.s_addr) ==
       _options.uamnatanyipex_addr.s_addr) {
     if (_options.debug)
-      syslog(LOG_DEBUG, "Excluding ip %s from SNAT becuase it is in uamnatanyipex",
+      syslog(LOG_DEBUG, "Excluding ip %s from SNAT because it is in uamnatanyipex",
              inet_ntoa(appconn->hisip));
     return 0;
   }
