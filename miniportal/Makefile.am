@@ -19,8 +19,7 @@ wwwDATAFILES = $(tmpl_files)
 chillidir = $(sysconfdir)/chilli
 wwwdir = $(chillidir)/www
 
-www_SCRIPTS = $(wwwSCRIPTFILES) 
-www_DATA = $(wwwDATAFILES) 
+www_DATA = $(wwwDATAFILES) $(wwwSCRIPTFILES) 
 
 EXTRA_DIST = $(wwwDATAFILES) $(chi_files:=.in) $(sh_files:=.in)
 

@@ -1,4 +1,3 @@
-#!/bin/sh
 . ./config.sh
 
 cat <<EOF
