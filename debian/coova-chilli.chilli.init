@@ -16,6 +16,8 @@ DESC=chilli
 
 START_CHILLI=0
 
+. /lib/lsb/init-functions
+
 if [ -f /etc/default/chilli ] ; then
    . /etc/default/chilli
 fi
@@ -60,7 +62,7 @@ prog="chilli"
 
 case "$1" in
   start)
-	echo -n "Starting $DESC: "
+	log_daemon_msg "Starting $DESC: "
 	/sbin/modprobe tun >/dev/null 2>&1
 	echo 1 > /proc/sys/net/ipv4/ip_forward
 	
@@ -78,7 +80,7 @@ case "$1" in
 	start-stop-daemon --start --quiet --pidfile /var/run/$NAME.$HS_LANIF.pid \
 		--exec $DAEMON -- -c $CONFIG
 	RETVAL=$?
-	echo "$NAME."
+	log_end_msg $RETVAL
 	;;
     
     checkrunning)
@@ -101,20 +103,21 @@ case "$1" in
 	;;
     
     stop)
-	echo -n "Stopping $DESC: "
+	log_daemon_msg "Stopping $DESC: "
 	
 	crontab -l 2>&- | grep -v $0 | crontab -
 	
 	
 	start-stop-daemon --oknodo --stop --quiet --pidfile /var/run/$NAME.$HS_LANIF.pid \
 	    --exec $DAEMON
-	echo "$NAME."
+	log_end_msg $?
 	;;
     
-    reload)
-	echo "Reloading $DESC."
+    force-reload|reload)
+	log_daemon_msg "Reloading $DESC."
 	start-stop-daemon --stop --signal 1 --quiet --pidfile \
 	    /var/run/$NAME.$HS_LANIF.pid --exec $DAEMON
+	log_end_msg $?
 	;;
     
     condrestart)
@@ -132,7 +135,7 @@ case "$1" in
     
     *)
 	N=/etc/init.d/$NAME
-	echo "Usage: $N {start|stop|restart|condrestart|status|reload|radconfig}" >&2
+	echo "Usage: $N {start|stop|restart|condrestart|status|reload|force-reload|radconfig}" >&2
 	exit 1
 	;;
 esac
