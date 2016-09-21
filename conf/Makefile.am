@@ -6,8 +6,8 @@ chillidir = $(sysconfdir)/chilli
 chilli_SCRIPTS = functions up.sh down.sh newmulti.sh wpad.dat
 chilli_DATA = defaults gui-config-default.ini
 
-pythondir = $(libdir)/python
-python_SCRIPTS = CoovaChilliLib.py
+#pythondir = $(libdir)/python
+#python_SCRIPTS = CoovaChilliLib.py
 
 initdir = $(sysconfdir)/init.d
 init_SCRIPTS = chilli
