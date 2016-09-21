@@ -23,9 +23,9 @@ line or in a configuration file. When on the command line, options are
 prefixed with two dashes and may or may not have an equal sign, for
 instance, these are equivalent:
 
-.I chilli --uamallowed www.example.com --uamanydns
+.I chilli \-\-uamallowed www.example.com \-\-uamanydns
 
-.I chilli --uamallowed="www.example.com" --uamanydns
+.I chilli \-\-uamallowed="www.example.com" \-\-uamanydns
 
 Options that do not have arguments behave the same way, just without any
 equal sign or second argument. When in the configuration file, options must
@@ -57,41 +57,41 @@ are also allowed in the configuration file.
 .SH OPTIONS
 
 As mentioned above, all options below are able to be put on the command line
-(prefixed with '--') or in a configuration file. A few options, shown below
+(prefixed with '\-\-') or in a configuration file. A few options, shown below
 with the leading dashes, are typically only used on the command line. 
 
 .TP
-.BI --help
+.BI \-\-help
 Or
-.B -h
+.B \-h
 for short; prints help and exits (command line)
 
 .TP
-.BI --version
+.BI \-\-version
 Or
-.B -V
+.B \-V
 for short; prints version and exits (command line)
 
 .TP
-.BI --fg
+.BI \-\-fg
 Or
-.B -f
+.B \-f
 for short; runs server in foreground (command line)
 
 .TP
-.BI --debug
+.BI \-\-debug
 Or
-.B -d
+.B \-d
 for short; run server in debug mode (command line)
 
 .TP
-.BI --debugfacility " level"
+.BI \-\-debugfacility " level"
 Increase the debug level (command line) (should be named debuglevel)
 
 .TP
-.BI --conf " file"
+.BI \-\-conf " file"
 Or
-.BI -c " file"
+.BI \-c " file"
 for short; use the configuration file
 .I file
 instead of the default show in
@@ -198,23 +198,23 @@ use for DNS lookups.
 .BI ipup " script"
 Script executed after the TUN/TAP network interface has been brought up.
 Executed with the following parameters: 
-.I <device-name> <ip-address> <net-mask>
+.I <device\-name> <ip\-address> <net\-mask>
 and with environment variables:
 .RS
 .TP
-.BI DEV= <tun/tap-device-name>
+.BI DEV= <tun/tap\-device\-name>
 The TUN/TAP device being brought up.
 
 .TP
-.BI ADDR= <tun/tap-device-ip>
+.BI ADDR= <tun/tap\-device\-ip>
 The TUN/TAP device IP address being brought up.
 
 .TP
-.BI MASK= <tun/tap-device-mask>
+.BI MASK= <tun/tap\-device\-mask>
 The TUN/TAP device net mask being brought up.
 
 .TP
-.BI NET= <tun/tap-device-net>
+.BI NET= <tun/tap\-device\-net>
 The TUN/TAP device network being brought up.
 
 .TP
@@ -225,14 +225,14 @@ configured in
 .BR chilli.conf(5)
 
 .TP
-.BI UAMPORT= <port-num>
+.BI UAMPORT= <port\-num>
 The 
 .B uamport 
 configured in 
 .BR chilli.conf(5)
 
 .TP
-.BI UAMUIPORT= <port-num>
+.BI UAMUIPORT= <port\-num>
 The 
 .B uamuiport 
 configured in 
@@ -252,23 +252,23 @@ environment variables (see source code for possibly more):
 .RS
 
 .TP
-.BI DEV= <tun/tap-device>
+.BI DEV= <tun/tap\-device>
 The TUN/TAP device.
 
 .TP
-.BI ADDR= <chilli-ip>
+.BI ADDR= <chilli\-ip>
 IP Address of chilli, see the
 .B uamlisten
 option.
 
 .TP
-.BI NET= <chilli-net>
+.BI NET= <chilli\-net>
 Network of chilli, see the
 .B net
 option.
 
 .TP
-.BI MASK= <chilli-net-mask>
+.BI MASK= <chilli\-net\-mask>
 Network mask of chilli, see the
 .B net
 options.
@@ -280,70 +280,70 @@ Is set to the
 value.
 
 .TP
-.BI NAS_ID= <nas-id>
+.BI NAS_ID= <nas\-id>
 The 
 .B radiusnasid
 option.
 
 .TP
-.BI WISPR_LOCATION_ID= <location-id>
+.BI WISPR_LOCATION_ID= <location\-id>
 The 
 .B radiuslocationid
 option.
 
 .TP
-.BI WISPR_LOCATION_NAME= <location-name>
+.BI WISPR_LOCATION_NAME= <location\-name>
 The 
 .B radiuslocationname
 option.
 
 .TP
 .BI USER_NAME= <username>
-User-name used to login.
+User\-Name used to login.
 
 .TP
-.BI FRAMED_IP_ADDRESS= <client-ip>
+.BI FRAMED_IP_ADDRESS= <client\-ip>
 The client's IP Address.
 
 .TP
-.BI CALLING_STATION_ID= <client-mac>
+.BI CALLING_STATION_ID= <client\-mac>
 The client's MAC Address.
 
 .TP
-.BI CALLED_STATION_ID= <chilli-mac>
+.BI CALLED_STATION_ID= <chilli\-mac>
 The MAC address of the chilli interface.
 
 .TP
 .BI FILTER_ID= <filter>
-A possible filter ID returned in RADIUS Filter-ID.
+A possible filter ID returned in RADIUS Filter\-ID.
 
 .TP
 .BI SESSION_TIMEOUT= <seconds>
-The max session time, as set by RADIUS Session-Timeout.
+The max session time, as set by RADIUS Session\-Timeout.
 
 .TP
 .BI IDLE_TIMEOUT= <seconds>
-The max idle time, as set by RADIUS Idle-Timeout.
+The max idle time, as set by RADIUS Idle\-Timeout.
 
 .TP
 .BI WISPR_BANDWIDTH_MAX_UP= <bandwidth>
-Max up stream bandwidth set by RADIUS WISPr-Bandwidth-Max-Up.
+Max up stream bandwidth set by RADIUS WISPr\-Bandwidth\-Max\-Up.
 
 .TP
 .BI WISPR_BANDWIDTH_MAX_DOWN= <bandwidth>
-Max down stream bandwidth set by RADIUS WISPr-Bandwidth-Max-Down.
+Max down stream bandwidth set by RADIUS WISPr\-Bandwidth\-Max\-Down.
 
 .TP
 .BI COOVACHILLI_MAX_INPUT_OCTETS= <bytes>
-Max input octets set by RADIUS CoovaChilli-Max-Input-Octets.
+Max input octets set by RADIUS CoovaChilli\-Max\-Input\-Octets.
 
 .TP
 .BI COOVACHILLI_MAX_OUTPUT_OCTETS= <bytes>
-Max output octets set by RADIUS CoovaChilli-Max-Output-Octets.
+Max output octets set by RADIUS CoovaChilli\-Max\-Output\-Octets.
 
 .TP
 .BI COOVACHILLI_MAX_TOTAL_OCTETS= <bytes>
-Max total octets set by RADIUS CoovaChilli-Max-Total-Octets.
+Max total octets set by RADIUS CoovaChilli\-Max\-Total\-Octets.
 
 .RE
 
@@ -364,21 +364,21 @@ URL.
 
 .TP
 .BI nasip " ipaddress"
-Value to use in RADIUS NAS-IP-Address attribute. If not present, 
+Value to use in RADIUS NAS\-IP\-Address attribute. If not present, 
 .B radiuslisten
 is used (which defaults to "0.0.0.0").
 
 .TP
 .BI nasmac " mac"
-MAC address value to use in RADIUS Called-Station-ID attribute. If not present, 
+MAC address value to use in RADIUS Called\-Station\-ID attribute. If not present, 
 the MAC address of the 
 .B dhcpif
-is used for Called-Station-ID.
+is used for Called\-Station\-ID.
 
 .TP
 .BI radiuslisten " host"
 Local interface IP address to use for the radius interface. Defaults to the
-value used in RADIUS NAS-IP-Address when
+value used in RADIUS NAS\-IP\-Address when
 .B nasip
 is not set.
 
@@ -400,7 +400,7 @@ The UDP port number to use for radius accounting requests (default 1813).
 
 .TP
 .BI radiussecret " secret"
-Radius shared secret for both servers (default coova-anonymous). This
+Radius shared secret for both servers (default coova\-anonymous). This
 secret should be changed in order not to compromise security.
 
 .TP
@@ -423,30 +423,30 @@ Best Current Practices v1, Feb 2003.
 
 .TP
 .BI radiusnasporttype " type"
-Value of NAS-Port-Type attribute. Defaults to 19
-(Wireless-IEEE-802.11).
+Value of NAS\-Port\-Type attribute. Defaults to 19
+(Wireless\-IEEE\-802.11).
 
 .TP
 .BI radiusoriginalurl
-Flag (defaults to off) to send the CoovaChilli-OriginalURL RADIUS VSA in
-Access-Request. 
+Flag (defaults to off) to send the CoovaChilli\-OriginalURL RADIUS VSA in
+Access\-Request. 
 
 .TP
 .BI adminuser " username"
-User-name to use for Administrative-User authentication in order to pick up
+User\-Name to use for Administrative\-User authentication in order to pick up
 chilli configurations and establish a device 'system' session.
 
 .TP
 .BI adminpasswd " password"
-Password to use for Administrative-User authentication in order to pick up
+Password to use for Administrative\-User authentication in order to pick up
 chilli configurations and establish a device 'system' session.
 
 .TP
 .BI adminupdatefile " filename" 
-The file to use as the Administrative-User update file. When used in
+The file to use as the Administrative\-User update file. When used in
 combination with the above adminuser and adminpasswd options,
-CoovaChilli-Config RADIUS attributes found in the Administrative-User
-Access-Accept are put into the specified file. If the file changes,
+CoovaChilli\-Config RADIUS attributes found in the Administrative\-User
+Access\-Accept are put into the specified file. If the file changes,
 chilli will reload it's configuration (it's assumed that this file is
 included into the chilli configuration file).
 
@@ -458,16 +458,16 @@ RADIUS attribtues.
 .TP
 .B openidauth
 Allows OpenID authentication by sending
-.I CoovaChilli-Config=allow-openidauth
-in RADIUS Access-Requests to inform the RADIUS server of the option.
+.I CoovaChilli\-Config=allow\-openidauth
+in RADIUS Access\-Requests to inform the RADIUS server of the option.
 
 .TP
 .B wpaguests
 Allows WPA Guest authentication by sending
-.I CoovaChilli-Config=allow-wpa-guests
-in RADIUS Access-Requests to inform the RADIUS server of the option. The
-RADIUS may return with an Access-Accept containing
-.I CoovaChilli-Config=require-uam-auth
+.I CoovaChilli\-Config=allow\-wpa\-guests
+in RADIUS Access\-Requests to inform the RADIUS server of the option. The
+RADIUS may return with an Access\-Accept containing
+.I CoovaChilli\-Config=require\-uam\-auth
 to give WPA access, but enforce the captive portal.
 
 .TP
@@ -515,14 +515,14 @@ Use the TAP interface instead of TUN (Linux only).
 Do not create arp table entries in when using TAP. (Linux only).
 
 .TP
-.BI nexthop " mac-address"
+.BI nexthop " <mac\-address>"
 Specify a MAC address which is the layer 2 next hop to route
 packets to (used with
 .B usetap
 only).
 
 .TP
-.BI rtmonfile " file"
+.BI rtmonfile " <file>"
 Option to launch the 
 .I chilli_rtmon
 daemon with the specified file as the update file. The 
@@ -608,7 +608,7 @@ URL of homepage to redirect unauthenticated users to. If not specified this defa
 .TP
 .BI uamaaaurl " url"
 When chilli is built with the 
-.I --enable-chilliproxy
+.I \-\-enable\-chilliproxy
 compile-time option, this configuration option can be used to define 
 a URL to use for the HTTP AAA protocol described here:
 http://www.coova.org/CoovaChilli/Proxy
@@ -691,9 +691,9 @@ automatically add to the walled garden. This is done by the inspecting of
 DNS packets being sent back to the subscriber. 
 
 .TP
-.BI uamregex " host-pattern::path-pattern::qs-pattern"
+.BI uamregex " <host\-pattern>::<path\-pattern>::<qs\-pattern>"
 When chilli is built with the 
-.B --enable-chilliredir
+.B \-\-enable\-chilliredir
 option given to the configure script, the 
 .B uamregex
 option is available. The value should be a
@@ -708,7 +708,7 @@ will be negated in meaning.
 
 Examples:
 
-.I --uamregex='.google.com$::!^mail/::*'
+.I \-\-uamregex='.google.com$::!^mail/::*'
 
 This will allow all requests to a .google.com host except if the URL starts with mail (links to Gmail). 
 
@@ -724,21 +724,21 @@ Default idle timeout (max idle time) unless otherwise set by RADIUS
 
 .TP
 .BI definteriminterval " seconds"
-Default interim-interval for RADIUS accounting unless otherwise set by RADIUS
+Default interim\-interval for RADIUS accounting unless otherwise set by RADIUS
 (defaults to 0, meaning unlimited).
 
 .TP
 .BI defbandwidthmaxdown
-Default bandwidth max down set in bps, same as WISPr-Bandwidth-Max-Down.
+Default bandwidth max down set in bps, same as WISPr\-Bandwidth\-Max\-Down.
 
 .TP
 .BI defbandwidthmaxup
-Default bandwidth max up set in bps, same as WISPr-Bandwidth-Max-Up.
+Default bandwidth max up set in bps, same as WISPr\-Bandwidth\-Max\-Up.
 
 .TP
 .B acctupdate
 Allow updating of session parameters with RADIUS attributes sent in
-Accounting-Response. 
+Accounting\-Response. 
 
 .TP
 .BI wwwdir " path"
@@ -747,7 +747,7 @@ accessible using the URL format http://<uamlisten>:<uamport>/www/<filename>
 
 .TP
 .BI wwwbin " script"
-Executable to run as a CGI type program (like haserl) for URLs with extention 
+Executable to run as a CGI type program (like haserl) for URLs with extension 
 .B .chi
 - in the format
 http://<uamlisten>:<uamport>/www/<file>.chi 
@@ -831,7 +831,7 @@ Return the so-called Chilli XML along with WISPr XML.
 .TP
 .B macauth
 If this option is given CoovaChilli will try to authenticate all users
-based on their mac address alone. The User-Name sent to the radius
+based on their mac address alone. The User\-Name sent to the radius
 server will consist of the MAC address and an optional suffix which
 is specified by the
 .B macsuffix
@@ -847,9 +847,9 @@ List of MAC addresses for which MAC authentication will be performed.
 Example:
 
 .RS
-.BI macallowed " 00-0A-5E-AC-BE-51,00-30-1B-3C-32-E9"
+.BI macallowed " 00\-0A\-5E\-AC\-BE\-51,00\-30\-1B\-3C\-32\-E9"
 
-The User-Name sent to the radius server will consist of the MAC address
+The User\-Name sent to the radius server will consist of the MAC address
 and an optional suffix which is specified by the
 .B macsuffix
 option. If the 
@@ -866,7 +866,7 @@ specified.
 
 .TP
 .BI macsuffix " suffix"
-Suffix to add to the MAC address in order to form the User-Name, which
+Suffix to add to the MAC address in order to form the User\-Name, which
 is sent to the radius server.
 
 .TP
@@ -885,12 +885,12 @@ A file containing MAC address and IP address mappings for DHCP allocation.
 The file should be formatted as:
 
 .RS
-00-XX-XX-XX-XX-XX  IP.IP.IP.IP
+00\-XX\-XX\-XX\-XX\-XX  IP.IP.IP.IP
 .RE
 
 .TP
 .BI localusers " file"
-A colon seperated file containing usernames and passwords of locally
+A colon separated file containing usernames and passwords of locally
 authenticated users. 
 
 .TP
@@ -1034,7 +1034,7 @@ URL.
 
 .SH "SEE ALSO"
 .BR chilli(8)
-.BR chilli-radius(5)
+.BR chilli\-radius(5)
 .BR chilli_opt(1)
 .BR chilli_radconfig(1)
 .BR syslogd(8)

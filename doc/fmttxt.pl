@@ -175,6 +175,8 @@ sub attributes2man {
 	}
     }
 
+    # "-" is a minus, not a hyphen, groff defaults to hyphen
+    $attributes =~ s/([^\\])-/\1\\-/g;
     $file = `cat chilli-radius.5.in`;
     $file =~ s/\@ATTRIBUTES\@/$attributes/;
 

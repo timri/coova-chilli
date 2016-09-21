@@ -8,7 +8,7 @@ chilli_redir \-  Chilli Redirection/Portal Server
 
 .SH SYNOPSIS
 .B chilli_redir
--b <path-to-binary-config> [other chilli options]
+\-b <path\-to\-binary\-config> [other chilli options]
 
 .SH DESCRIPTION
 .B chilli_redir

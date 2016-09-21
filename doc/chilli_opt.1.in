@@ -38,7 +38,7 @@ architecture depended) file. When executed by
 the binary file used is 
 .I config.bin
 found in a process specific directory in the temporary file system, such as
-.I /tmp/chilli-1000/config.bin
+.I /tmp/chilli\-1000/config.bin
 where 1000 is the process id of the running 
 .B chilli
 server. 
@@ -46,9 +46,9 @@ server.
 
 .SH EXAMPLES
 
-# chilli_opt --version
+# chilli_opt \-\-version
 
-# chilli_opt -b /tmp/chilli-[pid]/config.bin -r
+# chilli_opt \-b /tmp/chilli\-[pid]/config.bin \-r
 .RE
 
 .SH "SEE ALSO"

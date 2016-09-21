@@ -29,21 +29,21 @@ arguments as
 .B chilli
 (so that it can run off the same configuration file), but only looks for a
 small number of settings to perform an 
-.I Administrative-User
+.I Administrative\-User
 login. The utility will print out the value of all the 
-.I CoovaChilli-Config 
-attributes in the Access-Accept. 
+.I CoovaChilli\-Config 
+attributes in the Access\-Accept. 
 
 .SH EXAMPLES
 
-.I # chilli_radconfig --radiusserver1=192.168.1.1 \
-   --radiussecret=MySecret --adminuser=coovachilli \
-   --adminpasswd=coovachilli > hs.conf
+.I # chilli_radconfig \-\-radiusserver1=192.168.1.1 \
+   \-\-radiussecret=MySecret \-\-adminuser=coovachilli \
+   \-\-adminpasswd=coovachilli > hs.conf
 
 .SH "SEE ALSO"
 .BR chilli(8)
 .BR chilli.conf(5)
-.BR chilli-radius(5)
+.BR chilli\-radius(5)
 
 .SH NOTES 
 .LP

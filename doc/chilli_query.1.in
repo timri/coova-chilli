@@ -16,7 +16,7 @@ chilli_query \-  Interface into the chilli server
 
 .SH SYNOPSIS
 .B chilli_query
-[ \-s <unix-socket> ] <command> [<parameters>...]
+[ \-s <unix\-socket> ] <command> [<parameters>...]
 
 .SH DESCRIPTION
 .B chilli_query
@@ -31,20 +31,20 @@ Commands:
 .BI list
 To list all connected clients (subscribers) providing the MAC Address,
 IP Address, internal chilli state (dnat, pass, etc), the session id
-(used in Acct-Session-ID), authenticated status (1 authorized, 0 not),
-user-name used during login, duration / max duration, idle time / max
+(used in Acct\-Session\-ID), authenticated status (1 authorized, 0 not),
+user\-name used during login, duration / max duration, idle time / max
 idle time, input octets / max input octets, output octets / max output
 octets, max total octets, status of option swapoctets, bandwidth
 limitation information, and the original URL.
 
 .TP
-.BI listip " <ip-address>"
+.BI listip " <ip\-address>"
 Same as 
 .B list
 but for one IP address.
 
 .TP
-.BI listmac " <mac-address>"
+.BI listmac " <mac\-address>"
 Same as 
 .B list
 but for one MAC address.
@@ -67,27 +67,27 @@ Show the internal walled garden state.
 Show the internal RADIUS queue state.
 
 .TP
-.BI addgarden " [ ip <ip> | mac <mac> ] data <uamallow-resource>"
+.BI addgarden " [ ip <ip> | mac <mac> ] data <uamallow\-resource>"
 Add to the dynamic walled garden. When used without the 'ip' or 'mac'
 option, the entry applies to the global garden. Otherwise, it is
-session specific only if configured with --enable-sessgarden.
+session specific only if configured with \-\-enable\-sessgarden.
 
 .TP
-.BI remgarden " [ ip <ip> | mac <mac> ] data <uamallow-resource>"
+.BI remgarden " [ ip <ip> | mac <mac> ] data <uamallow\-resource>"
 Remove from the dynamic walled garden. When used without the 'ip'
 or 'mac' option, the entry applies to the global garden. Otherwise, it
-is session specific only if configured with --enable-sessgarden.
+is session specific only if configured with \-\-enable\-sessgarden.
 
 .RS
 .I PARAMETERS
 .TP
-.BI ip " <ip-address>"
+.BI ip " <ip\-address>"
 Select the session to be authorized by the IP address using this option (may
 be used with the option below)
 
 .TP
-.BI sessionid " <session-id>"
-Select the session to be authorized by the Session-ID (may be used with the
+.BI sessionid " <session\-id>"
+Select the session to be authorized by the Session\-ID (may be used with the
 above option)
 
 .TP
@@ -103,15 +103,15 @@ Sets the max session time of the session.
 Sets the max idle time of the session.
 
 .TP
-.BI maxoctets " <number-of-bytes>"
+.BI maxoctets " <number\-of\-bytes>"
 Sets the max data (input + output) limit of the session.
 
 .TP
-.BI maxinputoctets " <number-of-bytes>"
+.BI maxinputoctets " <number\-of\-bytes>"
 Sets the max input data limit of the session.
 
 .TP
-.BI maxoutputoctets " <number-of-bytes>"
+.BI maxoutputoctets " <number\-of\-bytes>"
 Sets the max output data limit of the session.
 
 .TP
@@ -125,7 +125,7 @@ Sets the max down bandwidth of the session.
 .RE
 
 .TP 
-.BI logout " <client-mac-address>" 
+.BI logout " <client\-mac\-address>" 
 Logout and releases the DHCP lease of a client explicitly based on the MAC
 address (gotten from a list command).  
 
@@ -133,7 +133,7 @@ address (gotten from a list command).
 
 # chilli_query list
 .RE
-00:0D:XX:XX:XX:XX 10.1.0.3 dnat 46c83f70000 0 - 0/0 0/0 http://url.com
+00:0D:XX:XX:XX:XX 10.1.0.3 dnat 46c83f70000 0 \- 0/0 0/0 http://url.com
 
 # chilli_query authorize ip 10.1.0.3 sessiontimeout 60 username me
 .RE
@@ -165,7 +165,7 @@ address (gotten from a list command).
   }\(aq
 .RE
 User 1
- MAC:             00-11-XX-XX-XX-XX
+ MAC:             00\-11\-XX\-XX\-XX\-XX
  IP Address:      10.1.0.2
  Session ID:      46fd423c00000001
  User URL:        http://www.yahoo.com/

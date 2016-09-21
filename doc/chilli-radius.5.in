@@ -1,6 +1,6 @@
 .TH chilli-radius 5 "August 2007"
 .SH NAME
-chilli-radius \-  Information about RADIUS in chilli
+chilli\-radius \- Information about RADIUS in chilli
 
 
 .SH DESCRIPTION

@@ -12,7 +12,7 @@
 
 .TH chilli_response 1 "August 2007"
 .SH NAME
-chilli_response \-  Forms a CHAP Response 
+chilli_response \(hy Forms a CHAP Response 
 
 .SH SYNOPSIS
 .B chilli_response

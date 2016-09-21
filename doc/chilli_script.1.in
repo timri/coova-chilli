@@ -8,7 +8,7 @@ chilli_script \-  CoovaChilli Script Utility
 
 .SH SYNOPSIS
 .B chilli_script
-<path-to-binary-config> <program-path> [program-args]
+<path\-to\-binary\-config> <program\-path> [program\-args]
 
 .SH DESCRIPTION
 .B chilli_script

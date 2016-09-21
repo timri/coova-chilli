@@ -16,7 +16,7 @@ chilli_rtmon \-  Default Route Monitor for CoovaChilli
 
 .SH SYNOPSIS
 .B chilli_rtmon
--file <update file> -pid <chilli pid> [-debug]
+\-file <update file> \-pid <chilli pid> [\-debug]
 
 .SH DESCRIPTION
 .B chilli_rtmon
@@ -30,9 +30,9 @@ server to instruct it to reread the configuration.
 
 .SH EXAMPLES
 
-# chilli_rtmon -debug
+# chilli_rtmon \-debug
 
-# chilli_rtmon -file /tmp/nexthop.conf -pid <pid>
+# chilli_rtmon \-file /tmp/nexthop.conf \-pid <pid>
 .RE
 
 .SH "SEE ALSO"

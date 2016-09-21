@@ -8,7 +8,7 @@ chilli_radsec \-  Chilli RadSec Tunnel Server
 
 .SH SYNOPSIS
 .B chilli_radsec
--b <path-to-binary-config> [other chilli options]
+\-b <path\-to\-binary\-config> [other chilli options]
 
 .SH DESCRIPTION
 .B chilli_radsec
