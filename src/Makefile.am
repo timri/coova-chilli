@@ -14,7 +14,7 @@ radius_wispr.h radius_coovachilli.h ssl.h dns.h net.h \
 pkt.h conn.h lookup.h chilli_limits.h cmdline.h debug.h \
 radius_pkt.h ../bstring/bstrlib.h ../config.h system.h 
 
-lib_LTLIBRARIES = libchilli.la
+pkglib_LTLIBRARIES = libchilli.la
 sbin_PROGRAMS = \
 chilli chilli_response chilli_radconfig chilli_opt 
 
